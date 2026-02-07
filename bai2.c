@@ -14,12 +14,11 @@
 
 int main() {
     int n;
-    int arr[10];
     int max, min;
 
     printf("Nhap so phan tu cua mang: ");
     scanf("%d", &n);
-
+int arr[n];
     for (int i = 0; i < n; i++) {
         printf("Nhap phan tu thu %d: ", i);
         scanf("%d", &arr[i]);
