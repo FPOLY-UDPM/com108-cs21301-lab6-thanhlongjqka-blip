@@ -10,36 +10,63 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+void randomArray(int arr[], int size, int min, int max) {
+    srand(time(NULL));
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % (max - min + 1) + min;
+    }
+}
+
+// HÀM IN MẢNG
+void printArray(int arr[], int size) {
+    printf("Các phần tử của mảng là:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+float tinhTrungbinh(int arr[], int size){
+    int sum = 0;
+    int count = 0;
+}
+
+int flindmaxArray(int arr[], int size) {
+    int max = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+int flindminArray(int arr[], int size) {
+    int min = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    return min;
+}
 
 int main() {
     int n;
-    int arr[10];
-    int tong = 0, dem = 0;
-    float trungBinh;
-
-    printf("Nhap so phan tu cua mang: ");
+    
+    printf("Nhập số lượng phần tử của mảng: ");
     scanf("%d", &n);
+    
+    int arr[10];
 
-    for (int i = 0; i < n; i++) {
-        printf("Nhap phan tu thu %d: ", i);
-        scanf("%d", &arr[i]);
-    }
-
-    for (int i = 0; i < n; i++) {
-        if (arr[i] % 3 == 0) {
-            tong += arr[i];
-            dem++;
-        }
-    }
-
-    if (dem == 0) {
-        printf("Khong co so nao chia het cho 3 trong mang.\n");
-    } else {
-        trungBinh = (float)tong / dem;
-        printf("Trung binh cong cac so chia het cho 3: %.2f\n", trungBinh);
-    }
- 
+    randomArray(arr, n, 1, 1000);
+    printArray(arr, n);
+int max = flindmaxArray(arr, n);
+int min = flindminArray(arr, n);
+printf("Giá trị lớn nhất trong mảng là: %d\n", max);
+printf("Giá trị nhỏ nhất trong mảng là: %d\n", min);
+    
     return 0;
 }
-
 
